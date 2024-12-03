@@ -28,7 +28,9 @@ const UpdateEquipment = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6 ">
       <div className="w-full max-w-3xl bg-white shadow-lg rounded-lg p-8 my-10">
-        <h2 className="text-2xl font-bold text-center mb-6">Add Equipment</h2>
+        <h2 className="text-2xl font-bold text-center mb-6">
+          Update Equipment
+        </h2>
         {/* {success && (
           <div className="flex items-center bg-green-100 text-green-700 p-4 mb-6 rounded">
             <FaCheckCircle className="mr-2" /> Equipment added successfully!
@@ -46,7 +48,6 @@ const UpdateEquipment = () => {
               name="image"
               placeholder="Image URL"
               className="input input-bordered"
-              required
             />
           </div>
 
