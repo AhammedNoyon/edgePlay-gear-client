@@ -2,6 +2,13 @@ import { FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const handleSignIn = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+  };
   return (
     <div className="flex items-center justify-center  bg-gray-100 p-4 ">
       <div className="max-w-md w-full p-8 bg-white rounded-lg shadow-lg my-10">
@@ -32,19 +39,23 @@ const Login = () => {
         <p className="text-center text-gray-500 mb-4">OR</p>
 
         {/* Login form */}
-        <form>
+        <form onSubmit={handleSignIn}>
           <div className="mb-4">
             <input
+              name="email"
               type="email"
               placeholder="Enter your email..."
               className="input input-bordered w-full"
+              required
             />
           </div>
           <div className="mb-4">
             <input
+              name="password"
               type="password"
               placeholder="Password"
               className="input input-bordered w-full"
+              required
             />
           </div>
           <div className="flex items-center justify-between mb-4">

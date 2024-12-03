@@ -2,6 +2,15 @@ import { FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
+  const handleSignUp = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const name = form.name.value;
+    const photo = form.photo.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(name, photo, email, password);
+  };
   return (
     <div className="flex items-center justify-center  bg-gray-100 p-4 ">
       <div className="max-w-md w-full p-8 bg-white rounded-lg shadow-lg my-10">
@@ -14,7 +23,7 @@ const SignUp = () => {
           Welcome back
         </h2>
         <p className="text-center mb-4 text-gray-500">
-          Please enter your details to sign in.
+          Please enter your details to sign up.
         </p>
 
         {/* Social login buttons */}
@@ -32,19 +41,41 @@ const SignUp = () => {
         <p className="text-center text-gray-500 mb-4">OR</p>
 
         {/* Login form */}
-        <form>
+        <form onSubmit={handleSignUp}>
           <div className="mb-4">
             <input
-              type="email"
-              placeholder="Enter your email..."
+              name="name"
+              type="text"
+              placeholder="Enter your name"
               className="input input-bordered w-full"
+              required
             />
           </div>
           <div className="mb-4">
             <input
+              name="photo"
+              type="text"
+              placeholder="Enter your photo url"
+              className="input input-bordered w-full"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <input
+              name="email"
+              type="email"
+              placeholder="Enter your email"
+              className="input input-bordered w-full"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <input
+              name="password"
               type="password"
               placeholder="Password"
               className="input input-bordered w-full"
+              required
             />
           </div>
 
