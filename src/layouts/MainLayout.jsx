@@ -1,5 +1,23 @@
+import { Outlet } from "react-router-dom";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+
 const MainLayout = () => {
-  return <div className="text-6xl">Layout</div>;
+  return (
+    <>
+      <header>
+        <nav>
+          <Navbar></Navbar>
+        </nav>
+      </header>
+      <main>
+        <Outlet></Outlet>
+      </main>
+      <footer>
+        <Footer></Footer>
+      </footer>
+    </>
+  );
 };
 
 export default MainLayout;
