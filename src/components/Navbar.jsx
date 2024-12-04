@@ -1,27 +1,39 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.jpg";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import "../index.css";
 
 const Navbar = () => {
-  // const { name } = useContext(AuthContext);
+  const { users, logoutUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  console.log(users);
   const link = (
     <>
       <li>
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="">All Equipment</NavLink>
+        <NavLink to="/allEquipment">All Equipment</NavLink>
       </li>
       <li>
         <Link to="/addEquipment">Add Equipment </Link>
       </li>
       <li>
-        <NavLink to="">Equipment List</NavLink>
+        <NavLink to="/myEquipment">Equipment List</NavLink>
       </li>
     </>
   );
+  const handleLogout = () => {
+    logoutUser()
+      .then(() => {
+        console.log("Sign-out successful.");
+        navigate("/login");
+      })
+      .catch((error) => {
+        console.log(error.errorMessage);
+      });
+  };
   return (
     <div>
       <div className="py-3  bg-[#00bfa6a4]">
@@ -74,8 +86,26 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{link}</ul>
         </div>
         <div className="navbar-end">
-          <Link to="/login">Login / </Link>
-          <Link to="/signUp"> Sign Up</Link>
+          {users ? (
+            <div className="flex items-center gap-5">
+              <div className=" rounded-full border p-2">
+                <img
+                  className="w-14 h-14 rounded-full object-cover items-center"
+                  src={users?.photoURL}
+                  alt=""
+                  title={users?.displayName}
+                />
+              </div>
+              <button onClick={handleLogout}>
+                <Link>Logout</Link>
+              </button>
+            </div>
+          ) : (
+            <div>
+              <Link to="/login">Login / </Link>
+              <Link to="/signUp"> Sign Up</Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

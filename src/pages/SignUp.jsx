@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 
 const SignUp = () => {
-  const { signUpUser } = useContext(AuthContext);
+  const { signUpUser, manageUserProfile } = useContext(AuthContext);
   const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -18,6 +18,14 @@ const SignUp = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log("sign up successfully", user);
+        //update profile
+        manageUserProfile(name, photo)
+          .then(() => {
+            console.log("profile updated");
+          })
+          .catch((error) => {
+            console.log(error.errorMessage);
+          });
         // ...store to db....
       })
       .catch((error) => {
