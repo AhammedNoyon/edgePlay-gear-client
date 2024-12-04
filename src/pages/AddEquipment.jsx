@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { FaCheckCircle } from "react-icons/fa";
+import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddEquipment = () => {
+  const { users } = useContext(AuthContext);
   const handleAddEquipment = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -13,7 +17,10 @@ const AddEquipment = () => {
     const customization = form.customization.value;
     const processingTime = form.processingTime.value;
     const stockStatus = form.stockStatus.value;
-    console.log(
+    const userEmail = form.userEmail.value;
+    const userName = form.userName.value;
+
+    const addEquipmentInfo = {
       image,
       itemName,
       categoryName,
@@ -22,8 +29,32 @@ const AddEquipment = () => {
       rating,
       customization,
       processingTime,
-      stockStatus
-    );
+      stockStatus,
+      userEmail,
+      userName,
+    };
+    console.log(addEquipmentInfo);
+    fetch("http://localhost:5000/equipments", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(addEquipmentInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Equipment add successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          form.reset();
+        }
+      });
   };
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6 ">
@@ -140,6 +171,7 @@ const AddEquipment = () => {
           <div className="form-control">
             <label className="label">User Email</label>
             <input
+              value={`${users ? users?.email : ""}`}
               type="text"
               name="userEmail"
               readOnly
@@ -151,6 +183,7 @@ const AddEquipment = () => {
           <div className="form-control">
             <label className="label">User Name</label>
             <input
+              value={`${users ? users?.displayName : ""}`}
               type="text"
               name="userName"
               readOnly

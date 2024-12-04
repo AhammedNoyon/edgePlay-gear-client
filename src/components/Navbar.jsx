@@ -3,6 +3,7 @@ import logo from "../assets/logo.jpg";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import "../index.css";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { users, logoutUser } = useContext(AuthContext);
@@ -16,18 +17,28 @@ const Navbar = () => {
       <li>
         <NavLink to="/allEquipment">All Equipment</NavLink>
       </li>
-      <li>
-        <Link to="/addEquipment">Add Equipment </Link>
-      </li>
-      <li>
-        <NavLink to="/myEquipment">Equipment List</NavLink>
-      </li>
+      {users && (
+        <>
+          <li>
+            <Link to="/addEquipment">Add Equipment </Link>
+          </li>
+          <li>
+            <NavLink to="/myEquipment">Equipment List</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   const handleLogout = () => {
     logoutUser()
       .then(() => {
-        console.log("Sign-out successful.");
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Logout successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         navigate("/login");
       })
       .catch((error) => {

@@ -6,6 +6,7 @@ import SignUp from "../pages/SignUp";
 import AddEquipment from "../pages/AddEquipment";
 import AllEquipment from "../pages/AllEquipment";
 import MyEquipment from "../pages/MyEquipment";
+import SecureRoute from "../secure/SecureRoute";
 
 const router = createBrowserRouter([
   {
@@ -18,16 +19,24 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/addEquipment",
-        element: <AddEquipment></AddEquipment>,
-      },
-      {
         path: "/allEquipment",
         element: <AllEquipment></AllEquipment>,
       },
       {
+        path: "/addEquipment",
+        element: (
+          <SecureRoute>
+            <AddEquipment></AddEquipment>
+          </SecureRoute>
+        ),
+      },
+      {
         path: "/myEquipment",
-        element: <MyEquipment></MyEquipment>,
+        element: (
+          <SecureRoute>
+            <MyEquipment></MyEquipment>
+          </SecureRoute>
+        ),
       },
       {
         path: "/login",

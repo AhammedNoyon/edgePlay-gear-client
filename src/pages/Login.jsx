@@ -1,27 +1,119 @@
-import { useContext } from "react";
-import { FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { useContext, useRef, useState } from "react";
+import {
+  FaEye,
+  FaEyeSlash,
+  FaGithub,
+  FaGoogle,
+  FaTwitter,
+} from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const { signInUser } = useContext(AuthContext);
+  const { signInUser, googleSignIn, githubSignIn, forgetPass } =
+    useContext(AuthContext);
+  const navigate = useNavigate();
+  const [eye, setEye] = useState(false);
+  const email = useRef();
+
   const handleSignIn = (event) => {
     event.preventDefault();
     const form = event.target;
     const email = form.email.value;
     const password = form.password.value;
+    // const checked = form.checkbox.value;
+    // console.log(checked);
     console.log(email, password);
     //sign in to fb
     signInUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         console.log("sign in successfully", user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "sign in successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        form.reset();
         // ...store to fb.....
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+        return Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Please enter valid information",
+        });
+      });
+  };
+  //google sign up
+  const handleGoogleSignIn = () => {
+    googleSignIn()
+      .then((result) => {
+        console.log(result?.user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "sign up successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/login");
+      })
+      .catch((error) => {
+        return Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.errorMessage,
+        });
+      });
+  };
+  //github sign up
+  const handleGithubSignIn = () => {
+    githubSignIn()
+      .then((result) => {
+        console.log(result?.user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "sign up successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/login");
+      })
+      .catch((error) => {
+        return Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error,
+        });
+      });
+  };
+  //forget password
+  const handleForgetPass = () => {
+    const forgetEmail = email.current.value;
+    // console.log(forgetEmail);
+    if (!forgetEmail) {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please enter your email",
+      });
+    }
+    forgetPass(forgetEmail)
+      .then(() => {
+        console.log("forget successfully");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // ..
       });
   };
   return (
@@ -41,10 +133,16 @@ const Login = () => {
 
         {/* Social login buttons */}
         <div className="flex justify-around mb-4">
-          <button className="btn btn-outline btn-apple">
+          <button
+            onClick={handleGithubSignIn}
+            className="btn btn-outline btn-apple"
+          >
             <FaGithub className="text-black" />
           </button>
-          <button className="btn btn-outline btn-google">
+          <button
+            onClick={handleGoogleSignIn}
+            className="btn btn-outline btn-google"
+          >
             <FaGoogle className="text-red-500" />
           </button>
           <button className="btn btn-outline btn-twitter">
@@ -59,27 +157,35 @@ const Login = () => {
             <input
               name="email"
               type="email"
+              ref={email}
               placeholder="Enter your email..."
               className="input input-bordered w-full"
               required
             />
           </div>
-          <div className="mb-4">
+          <div className="mb-4 relative">
             <input
               name="password"
-              type="password"
+              type={`${eye ? "text" : "password"}`}
               placeholder="Password"
               className="input input-bordered w-full"
               required
             />
+            <div
+              onClick={() => setEye(!eye)}
+              className="absolute top-4 right-4 text-xl"
+            >
+              {eye ? <FaEyeSlash /> : <FaEye />}
+            </div>
           </div>
           <div className="flex items-center justify-between mb-4">
             <label className="flex items-center">
-              <input type="checkbox" className="checkbox" /> Remember me
+              <input type="checkbox" name="checkbox" className="checkbox" />
+              Remember me
             </label>
-            <Link to="/forgot-password" className="text-naBarBg">
-              Forgot password?
-            </Link>
+            <button onClick={handleForgetPass}>
+              <Link className="text-naBarBg">Forgot password?</Link>
+            </button>
           </div>
           <button className="btn text-titleColor bg-none border-naBarBg w-full">
             Sign in

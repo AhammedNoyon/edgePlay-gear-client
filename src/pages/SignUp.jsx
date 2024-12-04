@@ -1,12 +1,20 @@
-import { useContext } from "react";
-import { FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
+import { useContext, useState } from "react";
+import {
+  FaEye,
+  FaEyeSlash,
+  FaGithub,
+  FaGoogle,
+  FaTwitter,
+} from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const SignUp = () => {
-  const { signUpUser, manageUserProfile } = useContext(AuthContext);
+  const { signUpUser, manageUserProfile, googleSignIn, githubSignIn } =
+    useContext(AuthContext);
   const navigate = useNavigate();
+  const [eye, setEye] = useState(false);
   const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -87,7 +95,7 @@ const SignUp = () => {
             return Swal.fire({
               icon: "error",
               title: "Oops...",
-              text: error.errorMessage,
+              text: "Please enter valid information",
             });
           });
       })
@@ -99,6 +107,50 @@ const SignUp = () => {
           icon: "error",
           title: "Oops...",
           text: (errorCode, errorMessage),
+        });
+      });
+  };
+  //google sign up
+  const handleGoogleSignUp = () => {
+    googleSignIn()
+      .then((result) => {
+        console.log(result?.user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "sign up successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/login");
+      })
+      .catch((error) => {
+        return Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error.errorMessage,
+        });
+      });
+  };
+  //github sign up
+  const handleGithubSignUp = () => {
+    githubSignIn()
+      .then((result) => {
+        console.log(result?.user);
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "sign up successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/login");
+      })
+      .catch((error) => {
+        return Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: error,
         });
       });
   };
@@ -119,10 +171,16 @@ const SignUp = () => {
 
         {/* Social login buttons */}
         <div className="flex justify-around mb-4">
-          <button className="btn btn-outline btn-apple">
+          <button
+            onClick={handleGithubSignUp}
+            className="btn btn-outline btn-apple"
+          >
             <FaGithub className="text-black" />
           </button>
-          <button className="btn btn-outline btn-google">
+          <button
+            onClick={handleGoogleSignUp}
+            className="btn btn-outline btn-google"
+          >
             <FaGoogle className="text-red-500" />
           </button>
           <button className="btn btn-outline btn-twitter">
@@ -160,14 +218,20 @@ const SignUp = () => {
               required
             />
           </div>
-          <div className="mb-4">
+          <div className="mb-4 relative">
             <input
               name="password"
-              type="password"
+              type={`${eye ? "text" : "password"}`}
               placeholder="Password"
               className="input input-bordered w-full"
               required
             />
+            <div
+              onClick={() => setEye(!eye)}
+              className="absolute top-4 right-4 text-xl"
+            >
+              {eye ? <FaEyeSlash /> : <FaEye />}
+            </div>
           </div>
 
           <button className="btn text-titleColor bg-none border-naBarBg w-full">
