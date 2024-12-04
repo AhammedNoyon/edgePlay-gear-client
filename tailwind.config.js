@@ -7,6 +7,7 @@ export default {
         nabBg: "#E3F2FD",
         naBarBg: "#00bfa6a4",
         titleColor: "#00BFA6",
+        aboutBg: "rgb(236, 234, 227)",
       },
     },
   },
