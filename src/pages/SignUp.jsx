@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import { FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
 
 const SignUp = () => {
+  const { signUpUser } = useContext(AuthContext);
   const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -10,6 +13,18 @@ const SignUp = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(name, photo, email, password);
+    //sign up to fb
+    signUpUser(email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log("sign up successfully", user);
+        // ...store to db....
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
   };
   return (
     <div className="flex items-center justify-center  bg-gray-100 p-4 ">

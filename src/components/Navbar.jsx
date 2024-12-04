@@ -1,17 +1,24 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.jpg";
+import { useContext } from "react";
+import { AuthContext } from "../provider/AuthProvider";
+import "../index.css";
 
 const Navbar = () => {
+  // const { name } = useContext(AuthContext);
   const link = (
     <>
       <li>
-        <a to="">All Equipment</a>
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="">All Equipment</NavLink>
       </li>
       <li>
         <Link to="/addEquipment">Add Equipment </Link>
       </li>
       <li>
-        <a to="">Equipment List</a>
+        <NavLink to="">Equipment List</NavLink>
       </li>
     </>
   );
