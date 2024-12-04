@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const { signUpUser, manageUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -13,6 +15,54 @@ const SignUp = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(name, photo, email, password);
+    //validation
+    if (name.length < 3) {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please enter your name more than 3 character!",
+      });
+    }
+    if (password.length < 6) {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please password must more than 6 character!",
+      });
+    }
+    const digit = /(?=.*[0-9])/;
+    const upperCase = /(?=.*[A-Z])/;
+    const lowerCase = /(?=.*[a-z])/;
+    const special = /(?=.*[\W_])/;
+
+    if (!digit.test(password)) {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please Enter at least digit!",
+      });
+    }
+    if (!upperCase.test(password)) {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please Enter at least upperCase!",
+      });
+    }
+    if (!lowerCase.test(password)) {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please Enter at least lowerCase!",
+      });
+    }
+    if (!special.test(password)) {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Please Enter at least special character!",
+      });
+    }
     //sign up to fb
     signUpUser(email, password)
       .then((userCredential) => {
@@ -21,17 +71,35 @@ const SignUp = () => {
         //update profile
         manageUserProfile(name, photo)
           .then(() => {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "sign up successfully",
+              showConfirmButton: false,
+              timer: 1500,
+            });
             console.log("profile updated");
+            form.reset();
+            navigate("/login");
           })
           .catch((error) => {
             console.log(error.errorMessage);
+            return Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: error.errorMessage,
+            });
           });
-        // ...store to db....
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
+        return Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: (errorCode, errorMessage),
+        });
       });
   };
   return (
