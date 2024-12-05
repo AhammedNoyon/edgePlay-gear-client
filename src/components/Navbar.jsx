@@ -89,7 +89,7 @@ const Navbar = () => {
             <div className="h-14 w-14">
               <img src={logo} alt="" className=" w-full" />
             </div>
-            <h3 className="text-5xl font-bold text-[#00BFA6]">EdgePlay </h3>
+            <h3 className="md:text-5xl font-bold text-[#00BFA6]">EdgePlay </h3>
             <h3 className="text-xl font-bold">Gear</h3>
           </div>
         </div>

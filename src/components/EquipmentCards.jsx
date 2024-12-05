@@ -15,22 +15,19 @@ const EquipmentCards = () => {
   return (
     <>
       {equipments.slice(0, 6).map((equipment) => (
-        <div
-          key={equipment._id}
-          className="card card-side bg-base-100 shadow-xl"
-        >
-          <div className="w-44 h-44">
+        <div key={equipment?._id} className="card  glass ">
+          <div className="w-44 h-44 mx-auto">
             <img src={equipment?.image} alt="equipment" />
           </div>
           <div className="card-body">
             <h2 className="card-title">{equipment?.itemName}</h2>
-            <p>{equipment?.description.slice(1, 100)}...</p>
+            <p>{equipment?.description.slice(1, 142)}...</p>
             <div className="flex justify-between items-center">
               <p>Price : {equipment?.price}</p>
               <p>Rating : {equipment?.rating}</p>
             </div>
-            <div className="card-actions justify-end">
-              <button className="btn bg-naBarBg text-white font-bold text-lg">
+            <div className="card-actions justify-center">
+              <button className="btn bg-naBarBg text-white font-bold text-lg mt-5">
                 <Link to={`/equipmentDetails/${equipment?._id}`}>
                   View Details
                 </Link>
