@@ -8,6 +8,7 @@ import AllEquipment from "../pages/AllEquipment";
 import MyEquipment from "../pages/MyEquipment";
 import SecureRoute from "../secure/SecureRoute";
 import EquipmentDetails from "../pages/EquipmentDetails";
+import UpdateEquipment from "../pages/UpdateEquipment";
 
 const router = createBrowserRouter([
   {
@@ -22,12 +23,21 @@ const router = createBrowserRouter([
       {
         path: "/allEquipment",
         element: <AllEquipment></AllEquipment>,
+        loader: () => fetch("http://localhost:5000/equipments"),
       },
       {
         path: "/addEquipment",
         element: (
           <SecureRoute>
             <AddEquipment></AddEquipment>
+          </SecureRoute>
+        ),
+      },
+      {
+        path: "/updateEquipment",
+        element: (
+          <SecureRoute>
+            <UpdateEquipment></UpdateEquipment>
           </SecureRoute>
         ),
       },
