@@ -7,6 +7,7 @@ import AddEquipment from "../pages/AddEquipment";
 import AllEquipment from "../pages/AllEquipment";
 import MyEquipment from "../pages/MyEquipment";
 import SecureRoute from "../secure/SecureRoute";
+import EquipmentDetails from "../pages/EquipmentDetails";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,16 @@ const router = createBrowserRouter([
         element: (
           <SecureRoute>
             <MyEquipment></MyEquipment>
+          </SecureRoute>
+        ),
+      },
+      {
+        path: "/equipmentDetails/:id",
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/equipments/${params.id}`),
+        element: (
+          <SecureRoute>
+            <EquipmentDetails></EquipmentDetails>
           </SecureRoute>
         ),
       },

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { data } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const EquipmentCards = () => {
   const [equipments, setEquipments] = useState([]);
@@ -11,9 +11,10 @@ const EquipmentCards = () => {
         setEquipments(data);
       });
   }, []);
+
   return (
     <>
-      {equipments.map((equipment) => (
+      {equipments.slice(0, 6).map((equipment) => (
         <div
           key={equipment._id}
           className="card card-side bg-base-100 shadow-xl"
@@ -30,7 +31,9 @@ const EquipmentCards = () => {
             </div>
             <div className="card-actions justify-end">
               <button className="btn bg-naBarBg text-white font-bold text-lg">
-                View Details
+                <Link to={`/equipmentDetails/${equipment?._id}`}>
+                  View Details
+                </Link>
               </button>
             </div>
           </div>
