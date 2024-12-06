@@ -5,11 +5,11 @@ import Loading from "../components/Loading";
 
 const SecureRoute = ({ children }) => {
   const { users, loading } = useContext(AuthContext);
-  if (loading) {
-    return <Loading></Loading>;
-  }
   if (users) {
     return children;
+  }
+  if (loading) {
+    return <Loading></Loading>;
   }
   return <Navigate to="/login"></Navigate>;
 };

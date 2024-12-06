@@ -23,7 +23,7 @@ const Navbar = () => {
             <Link to="/addEquipment">Add Equipment </Link>
           </li>
           <li>
-            <NavLink to="/myEquipment">Equipment List</NavLink>
+            <NavLink to="/myEquipment">My Equipment List</NavLink>
           </li>
         </>
       )}
@@ -47,7 +47,7 @@ const Navbar = () => {
   };
   return (
     <div>
-      <div className="py-3  bg-[#00bfa6a4]">
+      <div className="py-3 hidden lg:block  bg-[#00bfa6a4]">
         <div className="flex justify-between w-11/12 md:w-8/12 mx-auto">
           <div className="text-center font-semibold">
             <h3 className=" text-xl text-white">Welcome to EdgePlay Gear</h3>
@@ -59,7 +59,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className="navbar p-0 w-11/12 md:w-8/12 mx-auto my-10">
+      <div className="navbar p-0 w-11/12 md:w-8/12 mx-auto mb-10 lg:my-10">
         <div className="navbar-start ">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
