@@ -1,5 +1,6 @@
 import About from "../components/About";
 import Banner from "../components/Banner";
+import ContactUs from "../components/ContactUs";
 import Discount from "../components/Discount";
 import EquipmentCards from "../components/EquipmentCards";
 import AboutUs from "./AboutUs";
@@ -21,6 +22,9 @@ const Home = () => {
         </section>
         <section className="w-11/12 md:w-2/3 mx-auto my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           <EquipmentCards></EquipmentCards>
+        </section>
+        <section className="w-11/12 md:w-2/3 mx-auto my-10 ">
+          <ContactUs></ContactUs>
         </section>
         <section className=" bg-[#F7F8F8] py-10">
           <AboutUs></AboutUs>

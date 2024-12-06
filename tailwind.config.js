@@ -9,6 +9,10 @@ export default {
         titleColor: "#00BFA6",
         aboutBg: "rgb(236, 234, 227)",
       },
+      backgroundImage: {
+        slider1: "url('./src/assets/slider1.png')",
+        slider2: "url('./src/assets/slider2.png')",
+      },
     },
   },
   // eslint-disable-next-line no-undef
