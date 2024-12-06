@@ -1,7 +1,9 @@
+import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 
 const AllEquipment = () => {
-  const equipments = useLoaderData();
+  const loadedData = useLoaderData();
+  const [equipments, setEquipments] = useState(loadedData);
   // console.log(equipments);
   // const {
   //   image,
@@ -14,11 +16,19 @@ const AllEquipment = () => {
   //   processingTime,
   //   stockStatus,
   // } = equipments;
+  const handleSortByPrice = () => {
+    console.log("sort button is clicked");
+    const sortByPrice = equipments.sort((a, b) => a.price - b.price);
+    setEquipments(sortByPrice);
+  };
   return (
     <div className=" w-11/12 md:w-2/3 mx-auto mb-20">
       <div className="flex justify-between items-center mt-20 mb-10">
         <h3 className="text-xl md:text-3xl font-bold">All Equipments</h3>
-        <button className="btn bg-naBarBg text-white font-bold text-lg">
+        <button
+          onClick={handleSortByPrice}
+          className="btn bg-naBarBg text-white font-bold text-lg"
+        >
           Sort By Price
         </button>
       </div>

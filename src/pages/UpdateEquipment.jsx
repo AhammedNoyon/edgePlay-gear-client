@@ -1,6 +1,24 @@
 import { FaCheckCircle } from "react-icons/fa";
+import { useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const UpdateEquipment = () => {
+  const loadUpdateData = useLoaderData();
+  const {
+    _id,
+    image,
+    itemName,
+    categoryName,
+    description,
+    price,
+    rating,
+    customization,
+    processingTime,
+    stockStatus,
+    userEmail,
+    userName,
+  } = loadUpdateData || {};
+  console.log(loadUpdateData);
   const handleUpdateEquipment = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -13,7 +31,7 @@ const UpdateEquipment = () => {
     const customization = form.customization.value;
     const processingTime = form.processingTime.value;
     const stockStatus = form.stockStatus.value;
-    console.log(
+    const updateEquipmentInfo = {
       image,
       itemName,
       categoryName,
@@ -22,8 +40,27 @@ const UpdateEquipment = () => {
       rating,
       customization,
       processingTime,
-      stockStatus
-    );
+      stockStatus,
+    };
+    fetch(`http://localhost:5000/equipments/${_id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateEquipmentInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Equipment update successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      });
   };
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6 ">
@@ -31,11 +68,6 @@ const UpdateEquipment = () => {
         <h2 className="text-2xl font-bold text-center mb-6">
           Update Equipment
         </h2>
-        {/* {success && (
-          <div className="flex items-center bg-green-100 text-green-700 p-4 mb-6 rounded">
-            <FaCheckCircle className="mr-2" /> Equipment added successfully!
-          </div>
-        )} */}
         <form
           onSubmit={handleUpdateEquipment}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
@@ -44,6 +76,7 @@ const UpdateEquipment = () => {
           <div className="form-control">
             <label className="label">Image</label>
             <input
+              defaultValue={image}
               type="text"
               name="image"
               placeholder="Image URL"
@@ -55,6 +88,7 @@ const UpdateEquipment = () => {
           <div className="form-control">
             <label className="label">Item Name</label>
             <input
+              defaultValue={itemName}
               type="text"
               name="itemName"
               placeholder="Enter item name"
@@ -66,6 +100,7 @@ const UpdateEquipment = () => {
           <div className="form-control">
             <label className="label">Category Name</label>
             <input
+              defaultValue={categoryName}
               type="text"
               name="categoryName"
               placeholder="Enter category name"
@@ -77,6 +112,7 @@ const UpdateEquipment = () => {
           <div className="form-control md:col-span-2">
             <label className="label">Description</label>
             <textarea
+              defaultValue={description}
               name="description"
               placeholder="Enter description"
               className="textarea textarea-bordered"
@@ -87,6 +123,7 @@ const UpdateEquipment = () => {
           <div className="form-control">
             <label className="label">Price</label>
             <input
+              defaultValue={price}
               type="number"
               name="price"
               placeholder="Enter price"
@@ -98,6 +135,7 @@ const UpdateEquipment = () => {
           <div className="form-control">
             <label className="label">Rating</label>
             <input
+              defaultValue={rating}
               type="number"
               name="rating"
               placeholder="Enter rating (1-5)"
@@ -109,6 +147,7 @@ const UpdateEquipment = () => {
           <div className="form-control md:col-span-2">
             <label className="label">Customization</label>
             <textarea
+              defaultValue={customization}
               name="customization"
               placeholder="Enter customization details"
               className="textarea textarea-bordered"
@@ -119,6 +158,7 @@ const UpdateEquipment = () => {
           <div className="form-control">
             <label className="label">Processing Time</label>
             <input
+              defaultValue={processingTime}
               type="text"
               name="processingTime"
               placeholder="Enter processing time"
@@ -130,6 +170,7 @@ const UpdateEquipment = () => {
           <div className="form-control">
             <label className="label">Stock Status</label>
             <input
+              defaultValue={stockStatus}
               type="text"
               name="stockStatus"
               placeholder="Enter stock quantity"
@@ -141,6 +182,7 @@ const UpdateEquipment = () => {
           <div className="form-control">
             <label className="label">User Email</label>
             <input
+              defaultValue={userEmail}
               type="text"
               name="userEmail"
               readOnly
@@ -152,6 +194,7 @@ const UpdateEquipment = () => {
           <div className="form-control">
             <label className="label">User Name</label>
             <input
+              defaultValue={userName}
               type="text"
               name="userName"
               readOnly

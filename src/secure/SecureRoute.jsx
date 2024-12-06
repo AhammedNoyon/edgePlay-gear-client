@@ -1,17 +1,19 @@
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 import Loading from "../components/Loading";
 
+// eslint-disable-next-line react/prop-types
 const SecureRoute = ({ children }) => {
   const { users, loading } = useContext(AuthContext);
-  if (users) {
-    return children;
-  }
+  const location = useLocation();
   if (loading) {
     return <Loading></Loading>;
   }
-  return <Navigate to="/login"></Navigate>;
+  if (users) {
+    return children;
+  }
+  return <Navigate state={location.pathname} to="/login"></Navigate>;
 };
 
 export default SecureRoute;

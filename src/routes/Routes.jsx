@@ -34,12 +34,14 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/updateEquipment",
+        path: "/updateEquipment/:id",
         element: (
           <SecureRoute>
             <UpdateEquipment></UpdateEquipment>
           </SecureRoute>
         ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/equipments/${params.id}`),
       },
       {
         path: "/myEquipment",
@@ -48,6 +50,7 @@ const router = createBrowserRouter([
             <MyEquipment></MyEquipment>
           </SecureRoute>
         ),
+        loader: () => fetch("http://localhost:5000/equipments"),
       },
       {
         path: "/equipmentDetails/:id",

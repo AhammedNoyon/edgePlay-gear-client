@@ -6,11 +6,12 @@ import {
   FaGoogle,
   FaTwitter,
 } from "react-icons/fa";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
+  const location = useLocation();
   const { signInUser, googleSignIn, githubSignIn, forgetPass } =
     useContext(AuthContext);
   const navigate = useNavigate();
@@ -38,6 +39,7 @@ const Login = () => {
           timer: 1500,
         });
         form.reset();
+        navigate(location?.state ? location.state : "/");
         // ...store to fb.....
       })
       .catch((error) => {
@@ -63,7 +65,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate("/login");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         return Swal.fire({
@@ -85,7 +87,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate("/login");
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => {
         return Swal.fire({
