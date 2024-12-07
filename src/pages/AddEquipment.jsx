@@ -34,7 +34,7 @@ const AddEquipment = () => {
       userName,
     };
     console.log(addEquipmentInfo);
-    fetch("http://localhost:5000/equipments", {
+    fetch("https://latest-sports-equipment-zone.vercel.app/equipments", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -57,17 +57,13 @@ const AddEquipment = () => {
       });
   };
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6 ">
-      <div className="w-full max-w-3xl bg-white shadow-lg rounded-lg p-8 my-10">
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6 dark:bg-black dark:text-white">
+      <div className="w-full max-w-3xl bg-white dark:bg-[#242424] dark:text-white shadow-lg rounded-lg p-8 my-10">
         <h2 className="text-2xl font-bold text-center mb-6">Add Equipment</h2>
-        {/* {success && (
-          <div className="flex items-center bg-green-100 text-green-700 p-4 mb-6 rounded">
-            <FaCheckCircle className="mr-2" /> Equipment added successfully!
-          </div>
-        )} */}
+
         <form
           onSubmit={handleAddEquipment}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 "
         >
           {/* Image */}
           <div className="form-control">
@@ -76,7 +72,7 @@ const AddEquipment = () => {
               type="text"
               name="image"
               placeholder="Image URL"
-              className="input input-bordered"
+              className="input input-bordered dark:bg-[#505050] focus:border-2 focus:border-naBarBg"
               required
             />
           </div>
@@ -88,7 +84,7 @@ const AddEquipment = () => {
               type="text"
               name="itemName"
               placeholder="Enter item name"
-              className="input input-bordered"
+              className="input input-bordered dark:bg-[#505050] focus:border-2 focus:border-naBarBg"
             />
           </div>
 
@@ -99,18 +95,8 @@ const AddEquipment = () => {
               type="text"
               name="categoryName"
               placeholder="Enter category name"
-              className="input input-bordered"
+              className="input input-bordered dark:bg-[#505050] focus:border-2 focus:border-naBarBg"
             />
-          </div>
-
-          {/* Description */}
-          <div className="form-control md:col-span-2">
-            <label className="label">Description</label>
-            <textarea
-              name="description"
-              placeholder="Enter description"
-              className="textarea textarea-bordered"
-            ></textarea>
           </div>
 
           {/* Price */}
@@ -120,7 +106,7 @@ const AddEquipment = () => {
               type="number"
               name="price"
               placeholder="Enter price"
-              className="input input-bordered"
+              className="input input-bordered dark:bg-[#505050] focus:border-2 focus:border-naBarBg"
             />
           </div>
 
@@ -131,18 +117,8 @@ const AddEquipment = () => {
               type="number"
               name="rating"
               placeholder="Enter rating (1-5)"
-              className="input input-bordered"
+              className="input input-bordered dark:bg-[#505050] focus:border-2 focus:border-naBarBg"
             />
-          </div>
-
-          {/* Customization */}
-          <div className="form-control md:col-span-2">
-            <label className="label">Customization</label>
-            <textarea
-              name="customization"
-              placeholder="Enter customization details"
-              className="textarea textarea-bordered"
-            ></textarea>
           </div>
 
           {/* Processing Time */}
@@ -152,7 +128,7 @@ const AddEquipment = () => {
               type="text"
               name="processingTime"
               placeholder="Enter processing time"
-              className="input input-bordered"
+              className="input input-bordered dark:bg-[#505050] focus:border-2 focus:border-naBarBg "
             />
           </div>
 
@@ -163,10 +139,18 @@ const AddEquipment = () => {
               type="text"
               name="stockStatus"
               placeholder="Enter stock quantity"
-              className="input input-bordered"
+              className="input input-bordered dark:bg-[#505050] focus:border-2 focus:border-naBarBg"
             />
           </div>
-
+          {/* Customization */}
+          <div className="form-control">
+            <label className="label">Customization</label>
+            <textarea
+              name="customization"
+              placeholder="Enter customization details"
+              className=" rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-[#505050] focus:border-2 focus:border-naBarBg"
+            ></textarea>
+          </div>
           {/* User Email (Read-only) */}
           <div className="form-control">
             <label className="label">User Email</label>
@@ -175,7 +159,7 @@ const AddEquipment = () => {
               type="text"
               name="userEmail"
               readOnly
-              className="input input-bordered bg-gray-200"
+              className="input input-bordered bg-gray-200 dark:bg-[#505050]"
             />
           </div>
 
@@ -187,13 +171,22 @@ const AddEquipment = () => {
               type="text"
               name="userName"
               readOnly
-              className="input input-bordered bg-gray-200"
+              className="input input-bordered bg-gray-200 dark:bg-[#505050]"
             />
           </div>
 
+          {/* Description */}
+          <div className="form-control md:col-span-2">
+            <label className="label">Description</label>
+            <textarea
+              name="description"
+              placeholder="Enter description"
+              className="textarea textarea-bordered dark:bg-[#505050] focus:border-2 focus:border-naBarBg"
+            ></textarea>
+          </div>
           <button
             type="submit"
-            className="btn border border-titleColor text-titleColor md:col-span-2"
+            className="btn border border-titleColor text-titleColor md:col-span-2 dark:bg-[#505050] dark:hover:bg-naBarBg dark:hover:text-white"
           >
             Add Equipment
           </button>

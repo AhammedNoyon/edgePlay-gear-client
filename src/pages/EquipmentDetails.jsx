@@ -27,7 +27,7 @@ const EquipmentDetails = () => {
         </div> */}
 
         {/* coffee details  */}
-        <div className="hero  my-20 mt-10">
+        <div className="hero  my-20 mt-10 dark:text-white">
           <div className="hero-content flex-col lg:flex-row px-0">
             <img src={image} className="max-w-sm rounded-lg " />
             <div>
@@ -53,10 +53,10 @@ const EquipmentDetails = () => {
                 to="/"
                 className="btn bg-naBarBg flex items-center text-xl mt-5 "
               >
-                <span className="text-2xl">
+                <span className="text-2xl dark:text-white">
                   <IoIosArrowRoundBack />
                 </span>
-                <span>home</span>
+                <span className="dark:text-white">home</span>
               </Link>
             </div>
           </div>

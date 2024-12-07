@@ -12,8 +12,8 @@ const AllEquipment = () => {
     // setEquipments(result);
   };
   return (
-    <div className=" w-11/12 md:w-2/3 mx-auto mb-20">
-      <div className="flex justify-between items-center mt-20 mb-10">
+    <div className=" w-11/12 md:w-2/3 mx-auto mb-20  dark:text-white">
+      <div className="flex justify-between items-center mt-20 mb-10 ">
         <h3 className="text-xl md:text-3xl font-bold">All Equipments</h3>
         <button
           onClick={() => handleSortByPrice()}
@@ -26,7 +26,7 @@ const AllEquipment = () => {
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
-          <thead>
+          <thead className="dark:text-white">
             <tr>
               <th>Total</th>
               <th>Image & Name</th>

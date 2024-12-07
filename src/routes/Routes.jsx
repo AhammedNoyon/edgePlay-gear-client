@@ -23,7 +23,8 @@ const router = createBrowserRouter([
       {
         path: "/allEquipment",
         element: <AllEquipment></AllEquipment>,
-        loader: () => fetch("http://localhost:5000/equipments"),
+        loader: () =>
+          fetch("https://latest-sports-equipment-zone.vercel.app/equipments"),
       },
       {
         path: "/addEquipment",
@@ -41,7 +42,9 @@ const router = createBrowserRouter([
           </SecureRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/equipments/${params.id}`),
+          fetch(
+            `https://latest-sports-equipment-zone.vercel.app/equipments/${params.id}`
+          ),
       },
       {
         path: "/myEquipment",
@@ -50,12 +53,15 @@ const router = createBrowserRouter([
             <MyEquipment></MyEquipment>
           </SecureRoute>
         ),
-        loader: () => fetch("http://localhost:5000/equipments"),
+        loader: () =>
+          fetch("https://latest-sports-equipment-zone.vercel.app/equipments"),
       },
       {
         path: "/equipmentDetails/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/equipments/${params.id}`),
+          fetch(
+            `https://latest-sports-equipment-zone.vercel.app/equipments/${params.id}`
+          ),
         element: (
           <SecureRoute>
             <EquipmentDetails></EquipmentDetails>

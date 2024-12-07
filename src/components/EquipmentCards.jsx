@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const EquipmentCards = () => {
   const [equipments, setEquipments] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/equipments")
+    fetch("https://latest-sports-equipment-zone.vercel.app/equipments")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -17,9 +17,9 @@ const EquipmentCards = () => {
       {equipments.slice(0, 6).map((equipment) => (
         <div key={equipment?._id} className="card  glass ">
           <div className="w-44 h-44 mx-auto">
-            <img src={equipment?.image} alt="equipment" />
+            <img className="" src={equipment?.image} alt="equipment" />
           </div>
-          <div className="card-body">
+          <div className="card-body dark:text-white">
             <h2 className="card-title">{equipment?.itemName}</h2>
             <p>{equipment?.description.slice(1, 142)}...</p>
             <div className="flex justify-between items-center">

@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyD6j0uRxCnr__b72xUFhDXXX4RievASooQ",
-  authDomain: "edgeplay-gear.firebaseapp.com",
-  projectId: "edgeplay-gear",
-  storageBucket: "edgeplay-gear.firebasestorage.app",
-  messagingSenderId: "1003159470667",
-  appId: "1:1003159470667:web:c59f89a9f37dec35dcc3ce",
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
 };
 
 // Initialize Firebase

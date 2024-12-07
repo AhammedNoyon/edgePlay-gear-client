@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: "class",
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
@@ -10,8 +11,8 @@ export default {
         aboutBg: "rgb(236, 234, 227)",
       },
       backgroundImage: {
-        slider1: "url('./src/assets/slider1.png')",
-        slider2: "url('./src/assets/slider2.png')",
+        slider1: "url('./assets/slider1.png')",
+        slider2: "url('./assets/slider2.png')",
       },
     },
   },

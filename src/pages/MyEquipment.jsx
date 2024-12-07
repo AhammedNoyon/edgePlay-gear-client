@@ -3,6 +3,7 @@ import { Link, Navigate, useLoaderData, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import { MdDeleteOutline, MdEdit } from "react-icons/md";
 import Swal from "sweetalert2";
+import { FaRegEye } from "react-icons/fa";
 
 const MyEquipment = () => {
   const loadedData = useLoaderData();
@@ -29,9 +30,12 @@ const MyEquipment = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/equipments/${_id}`, {
-          method: "Delete",
-        })
+        fetch(
+          `https://latest-sports-equipment-zone.vercel.app/equipments/${_id}`,
+          {
+            method: "Delete",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             console.log(data);
@@ -51,7 +55,7 @@ const MyEquipment = () => {
     });
   };
   return (
-    <div className="w-11/12 md:w-2/3 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 my-10 md:my-20">
+    <div className="w-11/12 md:w-2/3 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 my-10 md:my-20 dark:text-white">
       {myEquipments.length > 0 ? (
         myEquipments.map((myEquipment) => (
           <div
@@ -70,11 +74,11 @@ const MyEquipment = () => {
                   </h1>
                   <div>
                     <div className="flex flex-col text-3xl space-y-5 ">
-                      {/* <Link to={`/coffeeDetails/${_id}`}>
-          <button className="h-10 w-10 bg-bannerBtn flex justify-center items-center mx-auto text-white">
-            <FaRegEye />
-          </button>
-        </Link> */}
+                      <Link to={`/equipmentDetails/${myEquipment?._id}`}>
+                        <button className="h-10 w-10 bg-bannerBtn flex justify-center items-center mx-auto text-white">
+                          <FaRegEye />
+                        </button>
+                      </Link>
                       <Link to={`/updateEquipment/${myEquipment?._id}`}>
                         <button className="h-10 w-10 bg-neutral  flex justify-center items-center mx-auto text-white">
                           <MdEdit />
@@ -91,8 +95,10 @@ const MyEquipment = () => {
                     </div>
                   </div>
                 </div>
-                <p className="py-6">{myEquipment?.description}</p>
-                <p>Customization : {myEquipment?.customization}</p>
+                <div>
+                  <p className="py-6">{myEquipment?.description}</p>
+                  <p>Customization : {myEquipment?.customization}</p>
+                </div>
                 <div className="flex justify-between items-center mt-5">
                   <p>Price : {myEquipment?.price}</p>
                   <p>Rating : {myEquipment?.rating}</p>

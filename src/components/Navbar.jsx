@@ -62,7 +62,11 @@ const Navbar = () => {
       <div className="navbar p-0 w-11/12 md:w-8/12 mx-auto mb-10 lg:my-10">
         <div className="navbar-start ">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost dark:text-white lg:hidden"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -86,19 +90,21 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="flex items-center ">
-            <div className="h-14 w-14">
+            <div className="h-14 w-14 hidden lg:block">
               <img src={logo} alt="" className=" w-full" />
             </div>
-            <h3 className="md:text-5xl font-bold text-[#00BFA6]">EdgePlay </h3>
-            <h3 className="text-xl font-bold">Gear</h3>
+            <h3 className="text-3xl lg:text-5xl font-bold text-[#00BFA6]">
+              EdgePlay{" "}
+            </h3>
+            <h3 className="text-xl font-bold dark:text-white">Gear</h3>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{link}</ul>
+          <ul className="menu menu-horizontal px-1 dark:text-white">{link}</ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end relative">
           {users ? (
-            <div className="flex items-center gap-5">
+            <div className="flex items-center gap-5 dark:text-white">
               <div className=" rounded-full border p-2">
                 <img
                   className="w-14 h-14 rounded-full object-cover items-center"
@@ -112,7 +118,7 @@ const Navbar = () => {
               </button>
             </div>
           ) : (
-            <div>
+            <div className="dark:text-white">
               <Link to="/login">Login / </Link>
               <Link to="/signUp"> Sign Up</Link>
             </div>
