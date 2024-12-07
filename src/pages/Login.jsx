@@ -119,8 +119,8 @@ const Login = () => {
       });
   };
   return (
-    <div className="flex items-center justify-center  bg-gray-100 p-4 ">
-      <div className="max-w-md w-full p-8 bg-white rounded-lg shadow-lg my-10">
+    <div className="flex items-center justify-center  bg-gray-100 p-4 dark:bg-black">
+      <div className="max-w-md w-full p-8 bg-white rounded-lg shadow-lg my-10 dark:dark:bg-[#242424] dark:text-white">
         <div className="flex justify-center mb-6">
           <div className="flex items-center justify-center bg-nabBg text-white p-2 rounded-full">
             <span className="text-xl font-bold">⚽</span>
@@ -137,18 +137,18 @@ const Login = () => {
         <div className="flex justify-around mb-4">
           <button
             onClick={handleGithubSignIn}
-            className="btn btn-outline btn-apple"
+            className="btn btn-outline btn-apple dark:bg-[#505050] dark:border dark:border-naBarBg dark:hover:bg-naBarBg"
           >
             <FaGithub className="text-black" />
           </button>
           <button
             onClick={handleGoogleSignIn}
-            className="btn btn-outline btn-google"
+            className="btn btn-outline btn-google dark:bg-[#505050] dark:border dark:border-naBarBg dark:hover:bg-naBarBg"
           >
-            <FaGoogle className="text-red-500" />
+            <FaGoogle className="text-red-500 dark:bg-[#505050] dark:hover:bg-naBarBg" />
           </button>
-          <button className="btn btn-outline btn-twitter">
-            <FaTwitter className="text-blue-500" />
+          <button className="btn btn-outline btn-twitter dark:border dark:border-naBarBg dark:bg-[#505050] dark:hover:bg-naBarBg">
+            <FaTwitter className="text-blue-500 " />
           </button>
         </div>
         <p className="text-center text-gray-500 mb-4">OR</p>
@@ -161,7 +161,7 @@ const Login = () => {
               type="email"
               ref={email}
               placeholder="Enter your email..."
-              className="input input-bordered w-full"
+              className="input input-bordered w-full dark:bg-[#505050] focus:border-2 focus:border-naBarBg"
               required
             />
           </div>
@@ -170,7 +170,7 @@ const Login = () => {
               name="password"
               type={`${eye ? "text" : "password"}`}
               placeholder="Password"
-              className="input input-bordered w-full"
+              className="input input-bordered w-full dark:bg-[#505050] focus:border-2 focus:border-naBarBg"
               required
             />
             <div
@@ -189,7 +189,7 @@ const Login = () => {
               <Link className="text-naBarBg">Forgot password?</Link>
             </button>
           </div>
-          <button className="btn text-titleColor bg-none border-naBarBg w-full">
+          <button className="btn text-titleColor bg-none border-naBarBg w-full dark:bg-[#505050] dark:hover:bg-naBarBg dark:hover:text-white">
             Sign in
           </button>
         </form>

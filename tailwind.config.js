@@ -13,6 +13,9 @@ export default {
       backgroundImage: {
         slider1: "url('./assets/slider1.png')",
         slider2: "url('./assets/slider2.png')",
+        banner1: "url('/src/assets/banner1.jpg')",
+        banner2: "url('/src/assets/banner2.avif')",
+        banner3: "url('/src/assets/banner3.jpg')",
       },
     },
   },

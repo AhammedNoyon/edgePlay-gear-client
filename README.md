@@ -1,5 +1,6 @@
 Sports Equipment Website
-Live Site URL: **\*\*\*\***
+Live Site CLIENT URL: **edgePlay-gear.surge.sh**
+Live Site SERVER URL: **[edgePlay-gear.surge.sh](https://latest-sports-equipment-zone-1lb9e1ada-ahamed-noyon-s-projects.vercel.app/)**
 Description
 This is a feature-rich sports equipment website where users can browse, add, manage, and update sports equipment. It is built using React, Tailwind CSS, DaisyUI, and Firebase for authentication. The website includes both public and private routes with role-based functionality for an enhanced user experience.
 

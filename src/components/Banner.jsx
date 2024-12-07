@@ -12,8 +12,7 @@ import "../index.css";
 // import required modules
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 
-import slider1 from "../assets/slider3.png";
-import slider2 from "../assets/slider2.png";
+import { Fade } from "react-awesome-reveal";
 
 const Banner = () => {
   return (
@@ -32,49 +31,59 @@ const Banner = () => {
       className="mySwiper"
     >
       <SwiperSlide>
-        <div className="hero h-[600px] bg-slider2">
+        <div className="hero h-[600px] bg-banner3">
           <div className="hero-overlay "></div>
           <div className="hero-content text-neutral-content text-center">
             <div className="max-w-md">
-              <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-              <p className="mb-5">
-                Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                assumenda excepturi exercitationem quasi. In deleniti eaque aut
-                repudiandae et a id nisi.
-              </p>
-              <button className="btn btn-primary">Get Started</button>
+              <Fade direction="left" delay={1000}>
+                <h1 className="mb-5 text-5xl font-bold">
+                  Gear Up for Excellence
+                </h1>
+              </Fade>
+              <Fade direction="right" delay={1000}>
+                <p className="mb-5">
+                  Discover the ultimate collection of sports equipment to fuel
+                  your passion and elevate your performance. From beginners to
+                  pros, we’ve got everything you need to play, compete, and win.
+                  Explore top-quality gear designed to push your limits and help
+                  you achieve greatness in every game.
+                </p>
+              </Fade>
             </div>
           </div>
         </div>
       </SwiperSlide>
       <SwiperSlide>
-        <div className="hero h-[600px] bg-slider1">
+        <div className="hero h-[600px] bg-banner1">
           <div className="hero-overlay"></div>
           <div className="hero-content text-neutral-content text-center">
             <div className="max-w-md">
-              <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+              <h1 className="mb-5 text-5xl font-bold">
+                Unleash Your Athletic Potential
+              </h1>
               <p className="mb-5">
-                Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                assumenda excepturi exercitationem quasi. In deleniti eaque aut
-                repudiandae et a id nisi.
+                Step into a world where top-tier sports equipment meets
+                unmatched performance. Whether you're training for a new
+                challenge or perfecting your skills, our gear is designed to
+                support your journey. Let's make every moment count on and off
+                the field!
               </p>
-              <button className="btn btn-primary">Get Started</button>
             </div>
           </div>
         </div>
       </SwiperSlide>
       <SwiperSlide>
-        <div className="hero h-[600px] bg-slider2">
+        <div className="hero h-[600px] bg-banner2">
           <div className="hero-overlay"></div>
           <div className="hero-content text-neutral-content text-center">
             <div className="max-w-md">
-              <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
+              <h1 className="mb-5 text-5xl font-bold">Play Hard, Win Big</h1>
               <p className="mb-5">
-                Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                assumenda excepturi exercitationem quasi. In deleniti eaque aut
-                repudiandae et a id nisi.
+                Equip yourself with the finest sports gear that champions trust.
+                From innovative designs to durable materials, our collection
+                ensures you're always game-ready. Your victory starts here—gear
+                up and conquer!
               </p>
-              <button className="btn btn-primary">Get Started</button>
             </div>
           </div>
         </div>

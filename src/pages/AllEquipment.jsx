@@ -5,11 +5,10 @@ const AllEquipment = () => {
   const loadedData = useLoaderData();
   const [equipments, setEquipments] = useState(loadedData);
   const handleSortByPrice = () => {
-    console.log("sort button is clicked");
-    // const sortByPrice = equipments?.price;
-    // console.log(sortByPrice);
-    // const result = equipments?.price.sort((a, b) => a.price - b.price);
-    // setEquipments(result);
+    console.log(equipments);
+    const sortedByPriceAsc = [...equipments].sort((a, b) => a.price - b.price);
+    console.log(sortedByPriceAsc);
+    setEquipments(sortedByPriceAsc);
   };
   return (
     <div className=" w-11/12 md:w-2/3 mx-auto mb-20  dark:text-white">

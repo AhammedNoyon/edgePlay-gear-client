@@ -20,7 +20,7 @@ const Navbar = () => {
       {users && (
         <>
           <li>
-            <Link to="/addEquipment">Add Equipment </Link>
+            <NavLink to="/addEquipment">Add Equipment </NavLink>
           </li>
           <li>
             <NavLink to="/myEquipment">My Equipment List</NavLink>
@@ -84,7 +84,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow dark:bg-black dark:text-white"
             >
               {link}
             </ul>
@@ -93,18 +93,18 @@ const Navbar = () => {
             <div className="h-14 w-14 hidden lg:block">
               <img src={logo} alt="" className=" w-full" />
             </div>
-            <h3 className="text-3xl lg:text-5xl font-bold text-[#00BFA6]">
-              EdgePlay{" "}
+            <h3 className="text-xl lg:text-5xl font-bold text-[#00BFA6]">
+              EdgePlay
             </h3>
             <h3 className="text-xl font-bold dark:text-white">Gear</h3>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 dark:text-white">{link}</ul>
+          <ul className="menu menu-horizontal px-1 dark:text-white ">{link}</ul>
         </div>
         <div className="navbar-end relative">
           {users ? (
-            <div className="flex items-center gap-5 dark:text-white">
+            <div className="flex items-center gap-5 dark:text-white relative">
               <div className=" rounded-full border p-2">
                 <img
                   className="w-14 h-14 rounded-full object-cover items-center"
@@ -113,9 +113,16 @@ const Navbar = () => {
                   title={users?.displayName}
                 />
               </div>
-              <button onClick={handleLogout}>
-                <Link>Logout</Link>
-              </button>
+              <div className="absolute bg-white text-black w-36 px-4 rounded-xl right-1 py-3 -top-28 hover:top-28 z-50 hidden">
+                <h3 className="text-lg font-bold">{users?.displayName}</h3>
+
+                <button
+                  className="bg-naBarBg px-4 py-2 mt-1 rounded-lg"
+                  onClick={handleLogout}
+                >
+                  <Link>Logout</Link>
+                </button>
+              </div>
             </div>
           ) : (
             <div className="dark:text-white">

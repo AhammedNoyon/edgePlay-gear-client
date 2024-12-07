@@ -14,7 +14,7 @@ const Home = () => {
     <>
       <header>
         <div className="">
-          <div className=" absolute top-3 right-24 md:right-52 lg:top-[110px]  lg:right-[500px] ">
+          <div className=" absolute top-[75px] right-2 md:top-5 md:right-64 lg:top-[110px]  lg:right-[500px] ">
             <button onClick={changeTheme} className="text-4xl dark:text-white">
               {mode === "light" ? <MdDarkMode /> : <LuLightbulb />}
             </button>

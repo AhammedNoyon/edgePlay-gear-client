@@ -63,8 +63,8 @@ const UpdateEquipment = () => {
       });
   };
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6 ">
-      <div className="w-full max-w-3xl bg-white shadow-lg rounded-lg p-8 my-10">
+    <div className="min-h-screen bg-gray-100 dark:bg-black flex flex-col items-center p-6 ">
+      <div className="w-full max-w-3xl bg-white  shadow-lg rounded-lg p-8 my-10 dark:bg-[#242424] dark:text-white">
         <h2 className="text-2xl font-bold text-center mb-6">
           Update Equipment
         </h2>
@@ -80,7 +80,7 @@ const UpdateEquipment = () => {
               type="text"
               name="image"
               placeholder="Image URL"
-              className="input input-bordered"
+              className="input input-bordered  dark:bg-[#505050] focus:border-2 focus:border-naBarBg"
             />
           </div>
 
@@ -92,7 +92,7 @@ const UpdateEquipment = () => {
               type="text"
               name="itemName"
               placeholder="Enter item name"
-              className="input input-bordered"
+              className="input input-bordered  dark:bg-[#505050] focus:border-2 focus:border-naBarBg"
             />
           </div>
 
@@ -104,19 +104,8 @@ const UpdateEquipment = () => {
               type="text"
               name="categoryName"
               placeholder="Enter category name"
-              className="input input-bordered"
+              className="input input-bordered  dark:bg-[#505050] focus:border-2 focus:border-naBarBg"
             />
-          </div>
-
-          {/* Description */}
-          <div className="form-control md:col-span-2">
-            <label className="label">Description</label>
-            <textarea
-              defaultValue={description}
-              name="description"
-              placeholder="Enter description"
-              className="textarea textarea-bordered"
-            ></textarea>
           </div>
 
           {/* Price */}
@@ -127,7 +116,7 @@ const UpdateEquipment = () => {
               type="number"
               name="price"
               placeholder="Enter price"
-              className="input input-bordered"
+              className="input input-bordered  dark:bg-[#505050] focus:border-2 focus:border-naBarBg"
             />
           </div>
 
@@ -139,19 +128,8 @@ const UpdateEquipment = () => {
               type="number"
               name="rating"
               placeholder="Enter rating (1-5)"
-              className="input input-bordered"
+              className="input input-bordered  dark:bg-[#505050] focus:border-2 focus:border-naBarBg"
             />
-          </div>
-
-          {/* Customization */}
-          <div className="form-control md:col-span-2">
-            <label className="label">Customization</label>
-            <textarea
-              defaultValue={customization}
-              name="customization"
-              placeholder="Enter customization details"
-              className="textarea textarea-bordered"
-            ></textarea>
           </div>
 
           {/* Processing Time */}
@@ -162,7 +140,7 @@ const UpdateEquipment = () => {
               type="text"
               name="processingTime"
               placeholder="Enter processing time"
-              className="input input-bordered"
+              className="input input-bordered  dark:bg-[#505050] focus:border-2 focus:border-naBarBg"
             />
           </div>
 
@@ -174,8 +152,19 @@ const UpdateEquipment = () => {
               type="text"
               name="stockStatus"
               placeholder="Enter stock quantity"
-              className="input input-bordered"
+              className="input input-bordered  dark:bg-[#505050] focus:border-2 focus:border-naBarBg"
             />
+          </div>
+
+          {/* Customization */}
+          <div className="form-control">
+            <label className="label">Customization</label>
+            <textarea
+              defaultValue={customization}
+              name="customization"
+              placeholder="Enter customization details"
+              className=" rounded-lg border border-gray-300 dark:border-gray-600 dark:bg-[#505050] focus:border-2 focus:border-naBarBg"
+            ></textarea>
           </div>
 
           {/* User Email (Read-only) */}
@@ -186,7 +175,7 @@ const UpdateEquipment = () => {
               type="text"
               name="userEmail"
               readOnly
-              className="input input-bordered bg-gray-200"
+              className="input input-bordered bg-gray-200  dark:bg-[#505050] focus:border-2 focus:border-naBarBg"
             />
           </div>
 
@@ -198,13 +187,22 @@ const UpdateEquipment = () => {
               type="text"
               name="userName"
               readOnly
-              className="input input-bordered bg-gray-200"
+              className="input input-bordered bg-gray-200  dark:bg-[#505050] focus:border-2 focus:border-naBarBg "
             />
           </div>
-
+          {/* Description */}
+          <div className="form-control md:col-span-2">
+            <label className="label">Description</label>
+            <textarea
+              defaultValue={description}
+              name="description"
+              placeholder="Enter description"
+              className="textarea textarea-bordered  dark:bg-[#505050] focus:border-2 focus:border-naBarBg"
+            ></textarea>
+          </div>
           <button
             type="submit"
-            className="btn border border-titleColor text-titleColor md:col-span-2"
+            className="btn border border-titleColor text-titleColor md:col-span-2 dark:bg-[#505050] dark:hover:bg-naBarBg dark:hover:text-white"
           >
             Add Equipment
           </button>

@@ -60,7 +60,6 @@ const AddEquipment = () => {
     <div className="min-h-screen bg-gray-100 flex flex-col items-center p-6 dark:bg-black dark:text-white">
       <div className="w-full max-w-3xl bg-white dark:bg-[#242424] dark:text-white shadow-lg rounded-lg p-8 my-10">
         <h2 className="text-2xl font-bold text-center mb-6">Add Equipment</h2>
-
         <form
           onSubmit={handleAddEquipment}
           className="grid grid-cols-1 md:grid-cols-2 gap-6 "

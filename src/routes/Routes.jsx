@@ -9,12 +9,13 @@ import MyEquipment from "../pages/MyEquipment";
 import SecureRoute from "../secure/SecureRoute";
 import EquipmentDetails from "../pages/EquipmentDetails";
 import UpdateEquipment from "../pages/UpdateEquipment";
+import Error from "../pages/Error";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout></MainLayout>,
-    errorElement: <h3>Error</h3>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
