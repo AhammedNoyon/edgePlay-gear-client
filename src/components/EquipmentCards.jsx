@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import { Typewriter } from "react-simple-typewriter";
 
 const EquipmentCards = () => {
   const [equipments, setEquipments] = useState([]);
@@ -21,8 +22,12 @@ const EquipmentCards = () => {
     <>
       {equipments.slice(0, 6).map((equipment) => (
         <div data-aos="zoom-in" key={equipment?._id} className="card  glass ">
-          <div className="w-44 h-44 mx-auto">
-            <img className="" src={equipment?.image} alt="equipment" />
+          <div className="bg-slate-200 dark:bg-white">
+            <img
+              className="w-44 h-44 mx-auto"
+              src={equipment?.image}
+              alt="equipment"
+            />
           </div>
           <div className="card-body dark:text-white">
             <h2 className="card-title">{equipment?.itemName}</h2>

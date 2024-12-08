@@ -10,17 +10,14 @@ const Discount = () => {
   return (
     <div>
       <div className="text-center mb-10 w-11/12 md:w-full mx-auto">
-        <h3
-          data-aos="fade-down-right"
-          className="text-3xl font-bold dark:text-white"
-        >
+        <h3 data-aos="fade-up" className="text-3xl font-bold dark:text-white">
           Gear Up For Less - Kids and Basketball
         </h3>
 
-        <p data-aos="zoom-in" className="dark:text-white">
+        <p data-aos="fade-up" className="dark:text-white">
           Gear up for less - 30% off Kids
         </p>
-        <p data-aos="fade-up-left" className="dark:text-white">
+        <p data-aos="fade-up" className="dark:text-white">
           Black Friday Deals Are Still On For Basketball - Dont's Miss Out
         </p>
       </div>
