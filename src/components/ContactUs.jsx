@@ -1,12 +1,37 @@
+import { Typewriter } from "react-simple-typewriter";
 import contact from "../assets/contact.avif";
 
 const ContactUs = () => {
+  // const handleType = (count) => {
+  //   // access word count number
+  //   console.log(count)}
+  // }
+
+  // const handleDone = () => {
+  //   console.log(`Done after 5 loops!`)
+  // }
   return (
     <div className="dark:bg-[#242424] dark:rounded-lg grid grid-cols-1 lg:grid-cols-2 gap-5 items-center">
       <div className="dark:text-white dark:px-5">
         <div className="text-center lg:text-start mb-10 ">
-          <h3 className="text-3xl font-bold">CONTACT US</h3>
-          <p>YOUR TEXT HERE</p>
+          <div className="">
+            <h3 className="flex items-center gap-2">
+              <span className="text-3xl font-bold ">CONTACT US</span>
+              {""}
+              <span className="text-naBarBg font-bold text-lg">
+                {/* Style will be inherited from the parent element */}
+                <Typewriter
+                  words={["Please Here Your Info!"]}
+                  loop={true}
+                  cursor
+                  cursorStyle="_"
+                  typeSpeed={70}
+                  deleteSpeed={50}
+                  delaySpeed={1000}
+                />
+              </span>
+            </h3>
+          </div>
           <p className="mt-3">
             Have questions or need assistance? Feel free to reach out to us, and
             our team will be happy to help you with all your sports equipment

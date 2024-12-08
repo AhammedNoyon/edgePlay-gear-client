@@ -1,8 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Aos from "aos";
+import "aos/dist/aos.css";
 
 const EquipmentCards = () => {
   const [equipments, setEquipments] = useState([]);
+  useEffect(() => {
+    Aos.init({ duration: "1000" });
+  }, []);
   useEffect(() => {
     fetch("https://latest-sports-equipment-zone.vercel.app/equipments")
       .then((res) => res.json())
@@ -15,7 +20,7 @@ const EquipmentCards = () => {
   return (
     <>
       {equipments.slice(0, 6).map((equipment) => (
-        <div key={equipment?._id} className="card  glass ">
+        <div data-aos="zoom-in" key={equipment?._id} className="card  glass ">
           <div className="w-44 h-44 mx-auto">
             <img className="" src={equipment?.image} alt="equipment" />
           </div>

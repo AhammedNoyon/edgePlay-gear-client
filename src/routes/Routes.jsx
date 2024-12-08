@@ -20,6 +20,8 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+        loader: () =>
+          fetch("https://latest-sports-equipment-zone.vercel.app/equipments"),
       },
       {
         path: "/allEquipment",

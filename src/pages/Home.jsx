@@ -7,16 +7,35 @@ import EquipmentCards from "../components/EquipmentCards";
 import { useTheme } from "../theme/useTheme";
 import AboutUs from "./AboutUs";
 import { LuLightbulb } from "react-icons/lu";
+import CategoryProduct from "../components/CategoryProduct";
+import { useLoaderData } from "react-router-dom";
 
 const Home = () => {
+  const loadedData = useLoaderData();
+  // console.log(loadedData);
   const { changeTheme, mode } = useTheme();
   return (
     <>
       <header>
         <div className="">
-          <div className=" absolute top-[75px] right-2 md:top-5 md:right-64 lg:top-[110px]  lg:right-[500px] ">
+          <div className=" absolute top-[68px] right-2 md:top-[70px] md:right-8 lg:top-[110px]  lg:right-[500px] ">
             <button onClick={changeTheme} className="text-4xl dark:text-white">
-              {mode === "light" ? <MdDarkMode /> : <LuLightbulb />}
+              {mode === "light" ? (
+                <div
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content="Dark Mode"
+                >
+                  <MdDarkMode />{" "}
+                </div>
+              ) : (
+                <div
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content="white Mode"
+                  data-tooltip-place="top"
+                >
+                  <LuLightbulb />
+                </div>
+              )}
             </button>
           </div>
           <Banner></Banner>
@@ -28,6 +47,9 @@ const Home = () => {
       <main className="">
         <section className="my-20">
           <Discount></Discount>
+        </section>
+        <section className="my-10 md:my-20">
+          <CategoryProduct loadedData={loadedData}></CategoryProduct>
         </section>
         <section className="w-11/12 md:w-2/3 mx-auto my-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           <EquipmentCards></EquipmentCards>

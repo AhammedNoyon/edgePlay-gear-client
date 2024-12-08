@@ -46,7 +46,7 @@ const Navbar = () => {
       });
   };
   return (
-    <div>
+    <div className="">
       <div className="py-3 hidden lg:block  bg-[#00bfa6a4]">
         <div className="flex justify-between w-11/12 md:w-8/12 mx-auto">
           <div className="text-center font-semibold">
@@ -59,7 +59,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      <div className="navbar p-0 w-11/12 md:w-8/12 mx-auto mb-10 lg:my-10">
+      <div className="navbar p-0 w-11/12 md:w-8/12 mx-auto mb-10 lg:my-10 ">
         <div className="navbar-start ">
           <div className="dropdown">
             <div
@@ -90,13 +90,15 @@ const Navbar = () => {
             </ul>
           </div>
           <div className="flex items-center ">
-            <div className="h-14 w-14 hidden lg:block">
-              <img src={logo} alt="" className=" w-full" />
+            <div className="h-14 w-14 -ml-2 md:ml-0">
+              <img src={logo} alt="" className=" w-full dark:rounded-full" />
             </div>
-            <h3 className="text-xl lg:text-5xl font-bold text-[#00BFA6]">
+            <h3 className="text-xl lg:text-5xl font-bold text-[#00BFA6] hidden md:block">
               EdgePlay
             </h3>
-            <h3 className="text-xl font-bold dark:text-white">Gear</h3>
+            <h3 className="text-xl font-bold dark:text-white text-naBarBg">
+              Gear
+            </h3>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
@@ -104,7 +106,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end relative">
           {users ? (
-            <div className="flex items-center gap-5 dark:text-white relative">
+            <div className="flex items-center gap-2 dark:text-white relative">
               <div className=" rounded-full border p-2">
                 <img
                   className="w-14 h-14 rounded-full object-cover items-center"
@@ -113,11 +115,9 @@ const Navbar = () => {
                   title={users?.displayName}
                 />
               </div>
-              <div className="absolute bg-white text-black w-36 px-4 rounded-xl right-1 py-3 -top-28 hover:top-28 z-50 hidden">
-                <h3 className="text-lg font-bold">{users?.displayName}</h3>
-
+              <div className="">
                 <button
-                  className="bg-naBarBg px-4 py-2 mt-1 rounded-lg"
+                  className="border-2 border-naBarBg font-bold text-naBarBg px-2 py-2 mt-1 rounded-lg"
                   onClick={handleLogout}
                 >
                   <Link>Logout</Link>
