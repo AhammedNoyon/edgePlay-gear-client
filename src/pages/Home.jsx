@@ -14,6 +14,7 @@ import { Typewriter } from "react-simple-typewriter";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
 import Loading from "../components/Loading";
+import Faq from "../components/Faq";
 
 const Home = () => {
   const loadedData = useLoaderData();
@@ -98,6 +99,9 @@ const Home = () => {
         </section>
         <section className="mb-10 md:mb-48">
           <HappyClient></HappyClient>
+        </section>
+        <section className="mb-10 md:mb-48 w-11/12 md:w-2/3 mx-auto">
+          <Faq></Faq>
         </section>
         <section className=" bg-[#F7F8F8]  dark:bg-[#242424] dark:text-white py-10">
           <AboutUs></AboutUs>
