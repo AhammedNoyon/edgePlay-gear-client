@@ -2,14 +2,6 @@ import { Typewriter } from "react-simple-typewriter";
 import contact from "../assets/contact.avif";
 
 const ContactUs = () => {
-  // const handleType = (count) => {
-  //   // access word count number
-  //   console.log(count)}
-  // }
-
-  // const handleDone = () => {
-  //   console.log(`Done after 5 loops!`)
-  // }
   return (
     <div className="dark:bg-[#242424] dark:rounded-lg grid grid-cols-1 lg:grid-cols-2 gap-5 items-center">
       <div className="dark:text-white dark:px-5">

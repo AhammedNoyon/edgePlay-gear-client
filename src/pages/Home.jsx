@@ -54,10 +54,10 @@ const Home = () => {
         </div>
       </header>
       <main className="">
-        <section className="my-20">
+        <section className="my-10 md:my-48">
           <Discount></Discount>
         </section>
-        <section className="my-10 md:my-20">
+        <section className="my-10 md:my-48">
           <CategoryProduct loadedData={loadedData}></CategoryProduct>
         </section>
         <section>
@@ -93,10 +93,10 @@ const Home = () => {
             <EquipmentCards></EquipmentCards>
           </div>
         </section>
-        <section className="w-11/12 md:w-2/3 mx-auto my-10 ">
+        <section className="w-11/12 md:w-2/3 mx-auto my-10 md:my-48 ">
           <ContactUs></ContactUs>
         </section>
-        <section className="my-10 md:my-20">
+        <section className="mb-10 md:mb-48">
           <HappyClient></HappyClient>
         </section>
         <section className=" bg-[#F7F8F8]  dark:bg-[#242424] dark:text-white py-10">

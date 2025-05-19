@@ -5,9 +5,9 @@ const AllEquipment = () => {
   const loadedData = useLoaderData();
   const [equipments, setEquipments] = useState(loadedData);
   const handleSortByPrice = () => {
-    console.log(equipments);
+    // console.log(equipments);
     const sortedByPriceAsc = [...equipments].sort((a, b) => a.price - b.price);
-    console.log(sortedByPriceAsc);
+    // console.log(sortedByPriceAsc);
     setEquipments(sortedByPriceAsc);
   };
   return (

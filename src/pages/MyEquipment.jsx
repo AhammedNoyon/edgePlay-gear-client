@@ -14,13 +14,7 @@ const MyEquipment = () => {
   const [myEquipments, setMyEquipments] = useState(
     loadedData.filter((d) => d?.userEmail === users?.email)
   );
-  // //update
-  // const handleUpdate = (id) => {
-  //   console.log("update is clicked");
-  //   console.log(id);
-  //   navigate("/updateEquipment", { state: { id } });
-  // };
-  //delete
+
   const handleDelete = (_id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -40,7 +34,7 @@ const MyEquipment = () => {
         )
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
+            // console.log(data);
             if (result.deletedCount === 1) {
               Swal.fire({
                 title: "Deleted!",
@@ -58,27 +52,6 @@ const MyEquipment = () => {
   };
   return (
     <div className="w-11/12 md:w-2/3 mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 my-10 md:my-20 dark:text-white ">
-      {/* <Link
-                to="/"
-                className="btn bg-naBarBg flex items-center text-xl mt-5 "
-              >
-                <span className="text-2xl">
-                  <IoIosArrowRoundBack />
-                </span>
-                <span>home</span>
-              </Link> */}
-      {/* image,
-      itemName,
-      categoryName,
-      description,
-      price,
-      rating,
-      customization,
-      processingTime,
-      stockStatus,
-      userEmail,
-      userName, */}
-
       {myEquipments.length > 0 ? (
         myEquipments.map((myEquipment) => (
           <Fade direction="left" key={myEquipment?._id}>

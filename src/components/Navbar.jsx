@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 const Navbar = () => {
   const { users, logoutUser } = useContext(AuthContext);
   const navigate = useNavigate();
-  console.log(users);
+
   const link = (
     <>
       <li>
@@ -42,7 +42,7 @@ const Navbar = () => {
         navigate("/login");
       })
       .catch((error) => {
-        console.log(error.errorMessage);
+        // console.log(error.errorMessage);
       });
   };
   return (

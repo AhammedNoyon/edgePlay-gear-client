@@ -25,12 +25,12 @@ const Login = () => {
     const password = form.password.value;
     // const checked = form.checkbox.value;
     // console.log(checked);
-    console.log(email, password);
+    // console.log(email, password);
     //sign in to fb
     signInUser(email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log("sign in successfully", user);
+        // console.log("sign in successfully", user);
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -45,7 +45,7 @@ const Login = () => {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
+        // console.log(errorCode, errorMessage);
         return Swal.fire({
           icon: "error",
           title: "Oops...",
@@ -57,7 +57,7 @@ const Login = () => {
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
-        console.log(result?.user);
+        // console.log(result?.user);
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -79,7 +79,7 @@ const Login = () => {
   const handleGithubSignIn = () => {
     githubSignIn()
       .then((result) => {
-        console.log(result?.user);
+        // console.log(result?.user);
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -110,7 +110,7 @@ const Login = () => {
     }
     forgetPass(forgetEmail)
       .then(() => {
-        console.log("forget successfully");
+        // console.log("forget successfully");
       })
       .catch((error) => {
         const errorCode = error.code;

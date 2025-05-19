@@ -13,7 +13,7 @@ const EquipmentCards = () => {
     fetch("https://latest-sports-equipment-zone.vercel.app/equipments")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setEquipments(data);
       });
   }, []);

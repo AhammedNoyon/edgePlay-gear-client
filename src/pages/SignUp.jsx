@@ -114,7 +114,7 @@ const SignUp = () => {
   const handleGoogleSignUp = () => {
     googleSignIn()
       .then((result) => {
-        console.log(result?.user);
+        // console.log(result?.user);
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -136,7 +136,7 @@ const SignUp = () => {
   const handleGithubSignUp = () => {
     githubSignIn()
       .then((result) => {
-        console.log(result?.user);
+        // console.log(result?.user);
         Swal.fire({
           position: "top-end",
           icon: "success",
